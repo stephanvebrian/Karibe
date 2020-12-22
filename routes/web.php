@@ -21,3 +21,7 @@ Route::get('/home', 'Frontend\HomeController@home')->name('fe.home');
 Route::get('/post/{slug}', 'Frontend\PostController@show')->name('fe.post.show');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
