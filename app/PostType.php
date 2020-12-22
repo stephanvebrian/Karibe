@@ -9,6 +9,8 @@ class PostType extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'posttypes';
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -18,5 +20,9 @@ class PostType extends Model
         
     ];
 
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
     
 }

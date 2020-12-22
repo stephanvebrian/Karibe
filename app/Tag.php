@@ -9,6 +9,8 @@ class Tag extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'tags';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -17,5 +19,5 @@ class Tag extends Model
     protected $fillable = [
         
     ];
-    
+        
 }

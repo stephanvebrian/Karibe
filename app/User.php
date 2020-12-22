@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use Notifiable, SoftDeletes;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -40,4 +42,14 @@ class User extends Authenticatable
         'deleted_at' => 'datetime',
         'login_at' => 'datetime',
     ];
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

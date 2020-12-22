@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('home');
+    return redirect('fe.home');
 });
 
-Route::get('/home', 'Frontend\HomeController@home')->name('home');
+Route::get('/home', 'Frontend\HomeController@home')->name('fe.home');
+Route::get('/post/{slug}', 'Frontend\PostController@show')->name('fe.post.show');
+
 

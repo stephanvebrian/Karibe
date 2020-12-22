@@ -9,6 +9,8 @@ class PostTag extends Model
 {
     use SoftDeletes;
 
+    protected $table = 'post_tag';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,4 +20,13 @@ class PostTag extends Model
         
     ];
 
+    public function post()
+    {
+        return $this->belongsTo('App\Post');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
