@@ -37,7 +37,7 @@
                 @if (Auth::user()->role == 'Member')
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('fe.post.create') }}">
                             <span style="font-size: 1.4em;">Write a Post</span>
                         </a>
                     </li>
@@ -45,7 +45,7 @@
                 @elseif (Auth::user()->role == 'Admin')
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('fe.post.create') }}">
                             <span style="font-size: 1.4em;">Write a Post</span>
                         </a>
                     </li>

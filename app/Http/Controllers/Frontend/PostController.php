@@ -3,10 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\FrontBaseController;
 use Illuminate\Http\Request;
 use App\Post;
 
-class PostController extends Controller
+class PostController extends FrontBaseController
 {
 
     /**
@@ -17,14 +18,14 @@ class PostController extends Controller
     public function __construct(){}
 
     /**
-     * Display create pizza page
+     * Display create post page
      * @method GET
      * 
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        return $this->renderView('pizza.create');
+        return $this->renderView('post.create');
     }
 
     /**
@@ -38,7 +39,7 @@ class PostController extends Controller
     {
         $post = Post::where('slug', $slug)->first();
 
-        return $this->renderView('pizza.show')
+        return $this->renderView('post.show')
                                         ->with('post', $post);
     }
 

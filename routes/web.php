@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'Frontend\HomeController@home')->name('fe.home');
+Route::get('/post/create', 'Frontend\PostController@create')->name('fe.post.create');
 Route::get('/post/{slug}', 'Frontend\PostController@show')->name('fe.post.show');
 
 Route::group(['middleware' => ['roles:Member']], function () {
