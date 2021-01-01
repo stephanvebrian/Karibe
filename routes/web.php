@@ -14,14 +14,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('fe.home');
+    return redirect(route('fe.home'));
 });
 
 Route::get('/home', 'Frontend\HomeController@home')->name('fe.home');
 Route::get('/post/{slug}', 'Frontend\PostController@show')->name('fe.post.show');
 
+Route::group(['middleware' => ['roles:Member']], function () {
 
+});
 
-Auth::routes();
+Route::group(['middleware' => ['roles:Admin']], function () {
+    
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes([ 'reset' => true, 'confirm' => false ]);
+// Route::get('/home', 'HomeController@index')->name('home');
+

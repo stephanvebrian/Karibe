@@ -22,7 +22,9 @@ class HomeController extends FrontBaseController
         $posts = Post::orderBy('created_at', 'desc')->paginate(8);
 
         // return view('fe.home');
-        return $this->renderView('home');
+        return $this->renderView('home')
+                        ->with('hotPost', $hotPostWeek)
+                        ->with('posts', $posts);
     }
     
 }
