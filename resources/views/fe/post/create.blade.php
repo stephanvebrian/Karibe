@@ -117,12 +117,24 @@
             <div class="card-body text-center" style="font-size: 1.4em;">
                 <div class="row justify-content-center">
                     <div class="col-md-6">
-                        <button class="btn btn-primary">
-                            <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
-                            Submit
-                        </button>
+                        <form method="POST" action="{{ route('fe.post.store') }}">
+                            @csrf
+                            <button class="btn btn-primary">
+                                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                Submit
+                            </button>
+                        </form>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="card mr-2 mb-2 p-1" style="width: 65%;">
+            <div class="card-body text-center" style="font-size: 1.4em;">
+
+                
             </div>
         </div>
     </div>

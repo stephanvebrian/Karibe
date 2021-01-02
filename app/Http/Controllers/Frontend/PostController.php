@@ -29,6 +29,26 @@ class PostController extends FrontBaseController
     }
 
     /**
+     * store post page
+     * @method GET
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        // validate pizza input
+        $request->validate([
+            'comment' => 'required|string',
+            'suggest'=> 'required',
+            // 'gander'=> 'required|in:male,female',
+        ]);
+        
+        
+
+        return $this->renderView('post.create');
+    }
+    
+    /**
      * show specified post by slug
      * @method GET
      * 
