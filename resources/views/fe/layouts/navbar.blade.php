@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-primary mb-0">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="https://demos.creative-tim.com/now-ui-kit/index.html" rel="tooltip"
+            <a class="navbar-brand" href="{{ route('fe.home') }}" rel="tooltip"
                 title="Make more human socialize" data-placement="bottom" target="_blank">
                 <span style="font-size: 1.7em;">Karibe</span>
             </a>
