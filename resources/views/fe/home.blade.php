@@ -120,7 +120,9 @@
                         </a>
                     </div>
                     <div class="col-6 text-right">
-                        <a>Yesterday</a>
+                        <a>
+                            {{ \Carbon\Carbon::parse($post->created_at)->format('l - d F Y')}}
+                        </a>
                     </div>
                 </div>
             </div>
