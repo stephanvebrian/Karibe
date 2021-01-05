@@ -127,7 +127,12 @@
         </div>
 
         @endforeach
+    </div>
 
+    <div class="row">
+        <div class="col-md-12">
+            {{ $posts->withQueryString()->links() }}
+        </div>
     </div>
 </div>
 @stop
