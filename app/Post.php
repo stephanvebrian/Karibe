@@ -30,13 +30,13 @@ class Post extends Model
      */
     protected static function booted()
     {
-        static::creating(function ($user) {
+        static::creating(function ($post) {
             $client = new Client();
             $shortId = $client->generateId($size = 21);
-            $slug = Str::slug($user->title . Str::substr($shortId, 0, 4), '-');
+            $slug = Str::slug($post->title . Str::substr($shortId, 0, 4), '-');
 
-            $user->short_id = $shortId;
-            $user->slug = $slug;
+            $post->short_id = $shortId;
+            $post->slug = $slug;
         });
     }
 

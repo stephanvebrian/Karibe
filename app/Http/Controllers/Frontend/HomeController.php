@@ -14,16 +14,16 @@ class HomeController extends FrontBaseController
 
     public function home()
     {
-        $hotPostWeek = Post::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
-                                    ->orderBy('view_count', 'desc')
-                                    ->take(2)
-                                    ->get();
+        // $hotPostWeek = Post::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])
+        //                             ->orderBy('view_count', 'desc')
+        //                             ->take(2)
+        //                             ->get();
 
         $posts = Post::orderBy('created_at', 'desc')->paginate(8);
 
         // return view('fe.home');
         return $this->renderView('home')
-                        ->with('hotPost', $hotPostWeek)
+                        // ->with('hotPost', $hotPostWeek)
                         ->with('posts', $posts);
     }
     

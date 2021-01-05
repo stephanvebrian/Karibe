@@ -49,6 +49,12 @@
                             <span style="font-size: 1.4em;">Write a Post</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('fe.post.create') }}">
+                            <span style="font-size: 1.4em;">Admin Dashboard</span>
+                        </a>
+                    </li>
                     
                 @endif
 

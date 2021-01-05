@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FrontBaseController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Post;
+use App\Suggest;
 
 class PostController extends FrontBaseController
 {
-
     /**
      * Create a new controller instance.
      *
@@ -36,16 +37,31 @@ class PostController extends FrontBaseController
      */
     public function store(Request $request)
     {
-        // validate pizza input
         $request->validate([
-            'comment' => 'required|string',
-            'suggest'=> 'required',
-            // 'gander'=> 'required|in:male,female',
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'suggest'=> 'required|array|min:1',
+            'suggest.*'=> 'required|string|distinct|min:3',
         ]);
-        
-        
 
-        return $this->renderView('post.create');
+        $post = new Post();
+        $post->user_id = Auth::user()->id;
+        $post->type_id = 1;
+        $post->title = $request->title;
+        $post->body = $request->description;
+        $post->save();
+        
+        // dd($request->suggest);
+        foreach($request->suggest as $idx => $suggest) {
+            $sug = new Suggest();
+            $sug->post_id = $post->id;
+            $sug->value = $idx;
+            $sug->text = $suggest;
+            $sug->save();
+        }
+        
+        // return $this->renderView('post.create');
+        return redirect(route('fe.home'));
     }
     
     /**

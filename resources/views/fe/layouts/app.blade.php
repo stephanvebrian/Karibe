@@ -39,6 +39,9 @@
             box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
         }
     </style>
+
+    @yield('style')
+
 </head>
 
 <body class="landing-page sidebar-collapse">
@@ -49,7 +52,7 @@
     <div class="wrapper">
 
         <div class="section-page">
-            @yield('content')
+            @yield('content');
         </div>
 
         @include('fe.layouts.footer')
@@ -62,18 +65,20 @@
 
     <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
     <script src="{{ asset('assets/fe/js/plugins/bootstrap-switch.js') }}" type="text/javascript"></script>
-    
+
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="{{ asset('assets/fe/js/plugins/nouislider.min.js') }}" type="text/javascript"></script>
-    
+
     <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
     <script src="{{ asset('assets/fe/js/plugins/bootstrap-datepicker.js') }}" type="text/javascript"></script>
-    
+
     <!--  Google Maps Plugin    -->
     {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
 
     <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/fe/js/now-ui-kit.js?v=1.3.0') }}" type="text/javascript"></script>
+
+    @yield('script')
 </body>
 
 </html>
