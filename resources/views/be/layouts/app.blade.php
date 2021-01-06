@@ -69,7 +69,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <aside class="control-sidebar control-sidebar-light" style="height: fit-content;">
             <!-- Control sidebar content goes here -->
             <div class="p-3">
-                <a class="h6" href="#">Logout</a>
+                <a class="h6" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                    <span style="font-size: 1.4em;">Logout</span>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </div>
         </aside>
         <!-- /.control-sidebar -->
@@ -82,13 +87,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- REQUIRED SCRIPTS -->
 
     <!-- jQuery -->
-    <script src="{{ asset('assets/fe/plugins/jquery/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/be/plugins/jquery/jquery.min.js') }}" type="text/javascript"></script>
 
     <!-- Bootstrap 4 -->
-    <script src="{{ asset('assets/fe/plugins/bootstrap/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/be/plugins/bootstrap/js/bootstrap.bundle.min.js') }}" type="text/javascript"></script>
 
     <!-- AdminLTE App -->
-    <script src="{{ asset('assets/fe/dist/js/adminlte.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/be/dist/js/adminlte.min.js') }}" type="text/javascript"></script>
 </body>
 
 </html>
