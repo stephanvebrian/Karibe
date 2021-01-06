@@ -146,7 +146,15 @@
         <div class="card mr-2 mb-2 p-1" style="width: 65%;">
             <div class="card-body text-center" style="font-size: 1.4em;">
                 @forelse ($comments as $comment)
-                    <p>{{ $comment->user->username }} : {{ $comment->body }}</p>
+                    <div class="card-body" style="display: flex; flex-direction: column; align-items: flex-start">
+                      <span class="card-subtitle">{{ $comment->user->username }}</span>
+                      <span class="text-muted" style="font-size: 12px">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i>
+                        {{ \Carbon\Carbon::parse($comment->created_at)->format('l, d F Y')}}
+                      </span>
+                      <p class="card-text text-muted">{{ $comment->body }}</p>
+                    </div>
+                 
                     {{-- {{ dd($comment->postSuggest ) }} --}}
                 @empty
                     <p>There is no comment currently</p>
