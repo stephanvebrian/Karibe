@@ -28,6 +28,11 @@ Route::group(['middleware' => ['roles:Member']], function () {
 });
 
 Route::group(['middleware' => ['roles:Admin']], function () {
+    Route::get('/admin/dashboard', 'Backend\DashboardController@home')->name('be.home');
+    Route::get('/admin/post', 'Backend\PostController@index')->name('be.post');
+    Route::get('/admin/user', 'Backend\UserController@index')->name('be.user');
+    Route::get('/admin/comment', 'Backend\CommentController@index')->name('be.comment');
+    Route::get('/admin/stats', 'Backend\PostController@index')->name('be.stats');
     
 });
 
