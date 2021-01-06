@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Post;
 use App\Suggest;
+use App\Comment;
 
 class PostController extends FrontBaseController
 {
@@ -31,7 +32,7 @@ class PostController extends FrontBaseController
 
     /**
      * store post page
-     * @method GET
+     * @method POST
      * 
      * @return \Illuminate\Http\Response
      */
@@ -73,12 +74,53 @@ class PostController extends FrontBaseController
      */
     public function show($slug)
     {
-        $post = Post::where('slug', $slug)->first();
+        $post = Post::where('short_id', $slug)->first();
+        // if(!$post) return redirect(route('fe.home'));
+        $suggests = Suggest::where('post_id', $post->id)->get();
+        $comments = Comment::where('post_id', $post->id)->get();
+        $responseStatus = false;
+
+        if(Auth::check() == true){
+            $userComment = Comment::where('post_id', $post->id)
+                                    ->where('user_id', Auth::user()->id)
+                                    ->first();
+            if(!$userComment){
+                $responseStatus = true;
+            }
+        }
 
         return $this->renderView('post.show')
-                                        ->with('post', $post);
+                                    ->with('post', $post)
+                                    ->with('suggests', $suggests)
+                                    ->with('comments', $comments)
+                                    ->with('response_available', $responseStatus);
     }
 
+    /**
+     * store response
+     * @method POST
+     * 
+     * @return \Illuminate\Http\Response
+     */
+    public function storeResponse(Request $request){
+        $request->validate([
+            // 'suggest'=> 'required|numeric',
+            'suggest'=> 'required|string',
+            'comment' => 'required|string',
+            'slug' => 'required|string',
+        ]);
 
+        $post = Post::where('short_id', $request->slug)->first();
+
+        $comment = new Comment();
+        $comment->post_id = $post->id;
+        $comment->user_id = Auth::user()->id;
+        // $comment->title = '';
+        $comment->body = $request->comment;
+        $comment->save();
+            
+        // dd($request);
+        return redirect(route('fe.post.show', [ 'slug' => $request->slug ]));
+    }
 
 }
