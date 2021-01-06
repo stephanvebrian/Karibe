@@ -8,6 +8,11 @@ is a Web Programming BP2 Project
 - Stephan Vebrian (2201798950)
 - Vanessa Louise (2201741385)
 
+### How to run
+1. Composer Install
+2. create config/database.php from config/database.example.php
+
+
 ### Features
 <->
 
