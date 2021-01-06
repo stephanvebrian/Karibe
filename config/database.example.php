@@ -49,6 +49,7 @@ return [
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
 
+        // uncomment for local
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
@@ -69,6 +70,7 @@ return [
             ]) : [],
         ],
 
+        // uncomment for prods
         // 'mysql' => [
         //     'driver' => 'mysql',
         //     // 'url' => parse_url(env('CLEARDB_DATABASE_URL')),
