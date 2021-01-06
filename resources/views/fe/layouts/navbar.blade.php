@@ -51,7 +51,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('fe.post.create') }}">
+                        <a class="nav-link" href="{{ route('be.home') }}">
                             <span style="font-size: 1.4em;">Admin Dashboard</span>
                         </a>
                     </li>
